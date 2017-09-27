@@ -1,0 +1,54 @@
+package database;
+
+public class Protocol {
+	
+	private int protocolID;
+	private final int studyID;
+	private final String protocolNumber;
+	private int sponsorID;	
+	private String protocolName;
+	private double version;
+	
+	public Protocol(int protocolID, int studyID, String protocolNumber, int sponsorID, String protocolName, double version) {
+		this.protocolID = protocolID;
+		this.studyID = studyID;
+		this.protocolNumber = protocolNumber;
+		this.sponsorID = sponsorID;
+		this.protocolName = protocolName;
+		this.version = version;		
+	}
+
+	
+	private int getStudyID() {
+		return this.studyID;
+	}
+	
+	private String getProtocolNumber() {
+		return this.protocolNumber;
+	}
+	
+	private void setSponsor(int sponsorID) {
+		this.sponsorID = sponsorID;
+	}
+	
+	private int getSponsor() {
+		return this.sponsorID;
+	}
+	
+	private void setName(String name) {
+		this.protocolName = name;
+	}
+	
+	private String getName() {
+		return this.protocolName;
+	}
+	
+	private void setVersion(double version) {
+		this.version = version;
+	}
+	
+	private double getVersion() {
+		return this.version;
+	}
+	
+}

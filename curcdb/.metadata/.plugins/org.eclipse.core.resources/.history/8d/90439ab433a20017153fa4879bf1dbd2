@@ -1,0 +1,112 @@
+package database;
+import java.util.ArrayList;
+import java.util.Date;
+//inherit Protocol
+
+public class Study {
+	
+	private final int studyID;
+	private final String protocol;
+	private Sponsor sponsor;
+	private String name;
+	private String status;
+	private Date ote;
+	private Date cte;
+	private Date closed;
+	private ArrayList<Subject> subjects;
+	private ArrayList<Visit> visits;
+	private ArrayList<Budget> budgets;
+	private ArrayList<Physician> investigators; //investigators[0] is the PI
+	private int coordinator;
+
+	
+	private Study(int studyID, String protocol, Sponsor sponsor, String name, String status) {
+		
+		this.studyID = studyID;
+		this.protocol = protocol;
+		this.sponsor = sponsor;
+		this.name = name;
+		this.status = status;
+		
+		subjects = new ArrayList<>();
+		visits = new ArrayList<>();
+		budgets = new ArrayList<>();	
+		
+	}
+	
+	private int getStudyID() {
+		return this.studyID;
+	}
+	
+	private String getProtocol() {
+		return protocol;
+	}
+	
+	private Sponsor getSponsor() {
+		return sponsor;
+	}
+	
+	private void setSponsor(Sponsor sponsor) {
+		this.sponsor = sponsor;
+	}
+	
+	private void setStatus(String status, Date date) {
+
+		if(status.equalsIgnoreCase("upcoming")) {
+			this.status = status;
+			//do something here
+		}else if(status.equalsIgnoreCase("ote")) {
+			this.status = status;
+			ote = date;
+		}else if(status.equalsIgnoreCase("cte")) {
+			this.status = status;
+			cte = date;
+		}else if(status.equalsIgnoreCase("closed")) {
+			this.status = status;
+			closed = date;
+		}
+		
+		//else return some error code I guess?
+		
+	}
+	
+	private String getStatus() {		
+		if(status.equalsIgnoreCase("upcoming")||status.equalsIgnoreCase("ote")||status.equalsIgnoreCase("cte") || status.equalsIgnoreCase("closed")){
+			return status;
+		} else {
+			return "Status not set";
+		}
+	}
+	
+	private void addSubject(Subject subject) {
+		//make sure subject isn't already in the list
+		int flag = subjects.indexOf(subject);
+		if(flag==-1) {
+			subjects.add(subject);
+		} else{
+			//return some error code
+		}
+	}
+	
+	private Subject getSubject(Subject subject) {
+		int index = subjects.indexOf(subject);
+		return subjects.get(index);
+	}
+
+	private void removeSubject(Subject subject) {
+		int index = subjects.indexOf(subject);
+		subjects.remove(index); 
+	}
+	
+	private void addBudget(Budget budget) {
+		budgets.add(budget);
+	}
+	
+	private Budget getBudget(Budget budget) {
+		//search for budget in array list
+		int index = budgets.indexOf(budget);
+		return budgets.get(index);
+	}
+	
+	
+}

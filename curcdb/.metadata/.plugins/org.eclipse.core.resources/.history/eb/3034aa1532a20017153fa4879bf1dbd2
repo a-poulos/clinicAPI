@@ -1,0 +1,95 @@
+package database;
+import java.util.ArrayList;
+import java.util.Date;
+//inherit Protocol
+
+public class Study {
+	
+	private final int studyID;
+	private final String protocol;
+	private Sponsor sponsor;
+	private String name;
+	private String status;
+	private Date ote;
+	private Date cte;
+	private Date closed;
+	private String siteNum;
+	private ArrayList<Subject> subjects;
+	private ArrayList<Visit> visits;
+	private ArrayList<Budget> budgets;
+	private ArrayList<Physician> investigators; //investigators[0] is the PI
+	private int coordinator;
+
+	
+	private Study(int studyID, String protocol, Sponsor sponsor, String name, String status) {
+		
+		this.studyID = studyID;
+		this.protocol = protocol;
+		this.sponsor = sponsor;
+		this.name = name;
+		this.status = status;
+		
+		subjects = new ArrayList<>();
+		visits = new ArrayList<>();
+		budgets = new ArrayList<>();	
+		
+	}
+	
+	private int getStudyID() {
+		return this.studyID;
+	}
+	
+	private String getProtocol() {
+		return protocol;
+	}
+	
+	private Sponsor getSponsor() {
+		return sponsor;
+	}
+	
+	private void setSponsor(Sponsor sponsor) {
+		this.sponsor = sponsor;
+	}
+	
+	private void setStatus(String status, Date date) {
+
+		if(status.equals("upcoming")) {
+			this.status = status;
+			//do something here
+		}else if(status.equals("ote")) {
+			this.status = status;
+			ote = date;
+		}else if(status.equals("cte")) {
+			this.status = status;
+			cte = date;
+		}else if(status.equals("closed")) {
+			this.status = status;
+			closed = date;
+		}
+		
+		//else return some error code I guess?
+		
+	}
+	
+	private String getStatus() {
+		return status;
+	}
+	
+	private String getSiteNum() {
+		return siteNum;
+	}
+	
+	private void setSiteNum(String siteNum) {
+		this.siteNum = siteNum;
+	}
+	
+	private void addSubject(Subject subject) {
+		subjects.add(subject);
+	}
+
+	private void removeSubject(Subject subject) {
+		subjects.remove(subject); //need to find index in list
+	}
+	
+	
+}

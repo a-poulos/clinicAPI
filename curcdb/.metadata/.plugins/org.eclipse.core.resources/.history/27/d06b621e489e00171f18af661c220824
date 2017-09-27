@@ -1,0 +1,14 @@
+package database;
+import java.util.Date;
+
+public class Encounter {
+	
+	private final int encounterID;
+	
+	
+	public Encounter(int encounterID) {
+		
+	}
+	
+
+}

@@ -1,0 +1,35 @@
+package database;
+
+public class Protocol {
+	
+	private final int protocolID;
+	private String protocolName;
+	private double version;
+	
+	public Protocol(int protocolID, int sponsorID, String protocolName, double version) {
+		this.protocolID = protocolID;
+		this.protocolName = protocolName;
+		this.version = version;		
+	}
+
+	private int getID() {
+		return this.protocolID;
+	}
+	
+	private void setName(String name) {
+		this.protocolName = name;
+	}
+	
+	private String getName() {
+		return this.protocolName;
+	}
+	
+	private void setVersion(double version) {
+		this.version = version;
+	}
+	
+	private double getVersion() {
+		return this.version;
+	}
+	
+}

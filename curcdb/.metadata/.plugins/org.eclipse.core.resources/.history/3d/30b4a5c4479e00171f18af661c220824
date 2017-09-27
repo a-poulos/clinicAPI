@@ -1,0 +1,43 @@
+package database;
+import java.util.ArrayList;
+import java.util.Date;
+//inherit Protocol
+
+public class Study {
+	
+	private int studyID;
+	private final String protocolNumber;
+	private String name;
+	private String status;
+	private Date oteDate;
+	private Date cteDate;
+	private String siteNum;
+	private ArrayList<Integer> subjectIDs;
+	private ArrayList<Integer> visits;
+	private ArrayList<Integer> budgets;
+	private ArrayList<Protocol> protocols;
+	private ArrayList<Integer> investigators; //investigators[0] is the PI
+	private int coordinator;
+
+	
+	private Study(int studyID, String protocolNumber, String name, String status) {
+		
+		this.studyID = studyID;
+		this.protocolNumber = protocolNumber;
+		this.name = name;
+		this.status = status;
+		
+		subjectIDs = new ArrayList<>();
+		visits = new ArrayList<>();
+		budgets = new ArrayList<>();
+		protocols = new ArrayList<>();		
+		
+	}
+	
+	private void addProtocol(Protocol protocol) {
+		protocols.add(protocol);		
+	}
+
+	
+	
+}

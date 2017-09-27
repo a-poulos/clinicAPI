@@ -1,0 +1,50 @@
+package database;
+import java.util.Date;
+
+public class Protocol {
+	
+	private final int protocolID;
+	private final String number;
+	private Sponsor sponsor;
+	private String name;
+	private double version;
+	private Date effectiveDate;
+	
+	public Protocol(int protocolID, String number, Sponsor sponsor, String name, double version, Date effectiveDate) {
+		this.protocolID = protocolID;
+		this.number = number;
+		this.name = name;
+		this.version = version;		
+	}
+
+	private int getID() {
+		return this.protocolID;
+	}
+	
+	private void setName(String name) {
+		this.name = name;
+	}
+	
+	private String getName() {
+		return this.name;
+	}
+	
+	private void setVersion(double version) {
+		this.version = version;
+	}
+	
+	private double getVersion() {
+		return this.version;
+	}
+	
+	//A study manager class will ensure that there are 
+	//no overlapping dates
+	private void setDate(Date date) {
+		this.effectiveDate = date;
+	}
+	
+	private Date getDate() {
+		return this.effectiveDate;
+	}
+	
+}
