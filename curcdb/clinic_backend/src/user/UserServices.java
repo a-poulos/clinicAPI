@@ -23,11 +23,24 @@ import javax.naming.NamingException;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 
+/**
+ * Allows interaction with the ClinicApp and indirectly 
+ * retrieves information from the database
+ * @author Alex
+ *
+ */
 public class UserServices {
 
-//	@Path("/users")
+	@Path("/user")
 	@GET
 	@Produces("text/plain")
+	/**
+	 * Send all users in the database to the app
+	 * @return ArrayList of Users
+	 * @throws NamingException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public Response getUsers() throws NamingException, SQLException, ClassNotFoundException {
 		
 		UserFacade iFacade = UserFacade.getInstance();
@@ -47,9 +60,17 @@ public class UserServices {
 		}
 	}
 	
-	@Path("users/user")
+	@Path("user/user")
 	@GET
 	@Produces("text/plain")
+	/**
+	 * Return a User object retrieved from the database by username
+	 * @param username
+	 * @return The specified User object
+	 * @throws NamingException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public Response getUserByUsernameName(@QueryParam("username") String username) throws NamingException, SQLException, ClassNotFoundException {
 		
 		UserFacade iFacade = UserFacade.getInstance();
@@ -69,10 +90,19 @@ public class UserServices {
 		}
 		
 	}
-	@Path("users/create")
+	
+	@Path("user/create")
 	@POST
 	@Produces("text/plain")
 	@Consumes("application/x-www-form-urlencoded")
+	/**
+	 * Insert a new User into the database
+	 * @param formFields The User object fields needed for the construction of the User object
+	 * @return The newly created User object, successfully retrieved from the database after insertion
+	 * @throws NamingException
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public Response createUser(MultivaluedMap<String, String> formFields) throws NamingException, SQLException, ClassNotFoundException {
 		
 		UserFacade iFacade = UserFacade.getInstance();

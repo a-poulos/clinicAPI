@@ -12,15 +12,33 @@ import database.DatabaseAccess;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * A singleton facade class that uses a DatabaseAccess 
+ * object to connect to the clinic database
+ * @author Alex
+ *
+ */
 public class UserFacade {
 
+	
 	private static UserFacade singleton;
 	private DatabaseAccess uao;
 	
+	/**
+	 * Creates an instance of the singleton facade
+	 * @throws NamingException
+	 * @throws SQLException
+	 */
 	private UserFacade() throws NamingException, SQLException {
 		this.uao = DatabaseAccess.getInstance();
 	}
 	
+	/**
+	 * Returns the instance of the singleton facade
+	 * @return singleton
+	 * @throws NamingException
+	 * @throws SQLException
+	 */
 	static UserFacade getInstance() throws NamingException, SQLException {
 		if(singleton == null) {
 			singleton = new UserFacade();
@@ -28,6 +46,11 @@ public class UserFacade {
 		return singleton;
 	}
 	
+	/**
+	 * Retrieves all users from the database
+	 * @return ArrayList of Users
+	 * @throws SQLException
+	 */
 	ArrayList<User> getUsers() throws SQLException {
 		Connection con = uao.getConnection();
 		PreparedStatement stmt = con.prepareStatement("SELECT id, fName, lName, username, password FROM user"); 
@@ -57,6 +80,14 @@ public class UserFacade {
 	}
 
 	
+	/**
+	 * Search the database for a user by first and last name
+	 * @param firstName
+	 * @param lastName
+	 * @return ArrayList of Users with matching names
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	ArrayList<User> getUserByName(String firstName, String lastName) throws SQLException, ClassNotFoundException {
 		
 		Connection con = uao.getConnection();
@@ -87,6 +118,13 @@ public class UserFacade {
 				}
 	}
 	
+	/**
+	 * Searches the database for a user by their unique username
+	 * @param uname The username
+	 * @return ArrayList containing the User returned by the database
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	ArrayList<User> getUserByUsername(String uname) throws SQLException, ClassNotFoundException {
 		
 		Connection con = uao.getConnection();
@@ -116,7 +154,13 @@ public class UserFacade {
 				}
 	}
 	
-	
+	/**
+	 * Inserts a new User into the datbase
+	 * @param user The user to be inserted
+	 * @return The newly-created user that has been successfully retrieved from the database after insertion
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	ArrayList<User> createUser(User user) throws SQLException, ClassNotFoundException{
 		
 		Connection con = uao.getConnection();

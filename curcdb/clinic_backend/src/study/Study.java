@@ -22,7 +22,6 @@ public class Study {
 	private ArrayList<Subject> subjects;
 	private ArrayList<Visit> visits;
 	private ArrayList<Budget> budgets;
-	private ArrayList<Physician> investigators; //investigators[0] is the PI
 	private Coordinator coordinator;
 	private static ArrayList<Study> studyList;
 
