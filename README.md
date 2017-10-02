@@ -1,3 +1,1 @@
-# csci490
-
-Testing 1 2 3
+# This project has moved to https://github.com/lpreams/curcAPI
